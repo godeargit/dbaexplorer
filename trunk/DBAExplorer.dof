@@ -90,8 +90,8 @@ MaxStackSize=1048576
 ImageBase=4194304
 ExeDescription=
 [Directories]
-OutputDir=C:\Sources\DBManager\exe
-UnitOutputDir=C:\Sources\DBManager\dcu
+OutputDir=D:\Projects\dbaexplorer\exe
+UnitOutputDir=D:\Projects\dbaexplorer\dcu
 PackageDLLOutputDir=
 PackageDCPOutputDir=
 SearchPath=
@@ -135,17 +135,18 @@ ProductName=
 ProductVersion=1.0.0.0
 Comments=
 [Excluded Packages]
+c:\program files\borland\delphi7\Bin\DBWEBXPRT.BPL=Borland Web Wizard Package
 c:\program files\borland\delphi7\Bin\dclwebsnap70.bpl=Borland WebSnap Components
 c:\program files\borland\delphi7\Bin\DCLIB70.bpl=InterBase Data Access Components
 c:\program files\borland\delphi7\Bin\dcldss70.bpl=Borland Decision Cube Components
-c:\program files\borland\delphi7\Bin\DBWEBXPRT.BPL=Borland Web Wizard Package
-c:\program files\borland\delphi7\Projects\Bpl\ZComponent70.bpl=Zeos Database Components
 [HistoryLists\hlUnitAliases]
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
 [HistoryLists\hlUnitOutputDirectory]
-Count=1
-Item0=C:\Sources\DBManager\dcu
+Count=2
+Item0=D:\Projects\dbaexplorer\dcu
+Item1=C:\Sources\DBManager\dcu
 [HistoryLists\hlOutputDirectorry]
-Count=1
-Item0=C:\Sources\DBManager\exe
+Count=2
+Item0=D:\Projects\dbaexplorer\exe
+Item1=C:\Sources\DBManager\exe

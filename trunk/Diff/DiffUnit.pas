@@ -487,8 +487,8 @@ begin
     result := false;
 end;
 //------------------------------------------------------------------------------
-
-(*//buggy lowered precision stuff ...
+(*
+//buggy lowered precision stuff ...
 function TDiff.RecursiveDiff2(bottom1, bottom2, top1, top2: integer): boolean;
 var
   i, j, curr1, curr2, Delta, D, k, big_slide_vec: integer;

@@ -1,3 +1,20 @@
+{
+	DBAExplorer - Oracle Admin Management Tool
+    Copyright (C) 2008  Alpaslan KILICKAYA
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+}
 unit Util;
 
 interface
@@ -823,19 +840,19 @@ procedure   CodeColors(Form : TForm; Style   :   String;   RichE   :   TcxRiched
       Startpos   :=   0;   
       with   RichE   do   
       begin   
-          FoundAt   :=   FindText('/*',   StartPos,   Length(Text),   []);
+          FoundAt   :=   FindText('{',   StartPos,   Length(Text),   []);
           while   FoundAt   <>   -1   do
           begin
               SelStart   :=   FoundAt;
               Startpos   :=   FoundAt+1;
-              FoundAt   :=   FindText('*/',   StartPos,   Length(Text),   [])+1;
+              FoundAt   :=   FindText('}',   StartPos,   Length(Text),   [])+1;
               if   FoundAt   <>   -1   then   
               begin   
                   SelLength   :=   (FoundAt   -   selstart)+1;   
                   SelAttributes.Style   :=   [fsItalic];   
                   SelAttributes.Color   :=   clGreen;
                   StartPos   :=   FoundAt+1;   
-                  FoundAt   :=   FindText('/*',   StartPos,   Length(Text),   []);   
+                  FoundAt   :=   FindText('{',   StartPos,   Length(Text),   []);   
               end;   
           end;   
       end;
