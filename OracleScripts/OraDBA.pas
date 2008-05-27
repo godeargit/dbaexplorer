@@ -1,3 +1,20 @@
+{
+	DBAExplorer - Oracle Admin Management Tool
+    Copyright (C) 2008  Alpaslan KILICKAYA
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+}
 unit OraDBA;
 
 interface
@@ -341,7 +358,7 @@ end;
 function GetWaitLocks: string;
 begin
   result :=
-     'SELECT /*+ ordered */ distinct '
+     'SELECT {+ ordered } distinct '
     +'  s.SID, s.username, s.status, s.TYPE, s.osuser, s.server, '
     +'  s.serial# , s.sql_address, s.sql_hash_value, s.prev_sql_addr, '
     +'  s.prev_hash_value '
@@ -353,7 +370,7 @@ end;
 function GetWaitLockDetail: string;
 begin
   result :=
-     'SELECT /*+ ordered */ '
+     'SELECT {+ ordered } '
     +'       l.lmode, l.request, l.TYPE , l.id1, l.id2, l.BLOCK, l.ctime, '
     +'       DO.object_type, DO.owner, DO.object_name, '
     +'       DECODE (lmode, '
@@ -640,7 +657,7 @@ end;
 function GetStorageTablespaceObjectTotal: string;
 begin
   result :=
-     'SELECT   /*+ RULE */ '
+     'SELECT   {+ RULE } '
     +'         s_name tablespace_name, ROUND (NVL (table_space, 0), 2) table_mb, '
     +'         ROUND (NVL (index_space, 0), 2) index_mb, '
     +'         ROUND (NVL (cluster_space, 0), 2) cluster_mb,'
@@ -893,7 +910,7 @@ end;
 function GetDBStatus: string;
 begin
     result :=
-    'SELECT /*+ RULE */ '
+    'SELECT {+ RULE } '
     +'       instance_name, VERSION, startup_time, host_name, current_sessions, '
     +'       current_locks, blocked_sessions, log_mode, optimizer_mode, created, '
     +'       cache_advice, total_space '
@@ -909,7 +926,7 @@ begin
     +'       (SELECT VALUE optimizer_mode '
     +'          FROM SYS.v_$parameter '
     +'         WHERE NAME = ''optimizer_mode''), '
-    +'       (SELECT /*+ rule */ '
+    +'       (SELECT {+ rule } '
     +'               COUNT (*) current_locks '
     +'          FROM v$lock l, SYS.dba_objects o, v$session s '
     +'         WHERE l.SID = s.SID AND l.id1 = o.object_id), '

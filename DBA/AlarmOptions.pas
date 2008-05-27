@@ -1,3 +1,20 @@
+{
+	DBAExplorer - Oracle Admin Management Tool
+    Copyright (C) 2008  Alpaslan KILICKAYA
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+}
 unit AlarmOptions;
 
 interface
@@ -65,7 +82,7 @@ end;
 
 end.
 
-select /*+ALL_ROWS */ 'Physical I/O',
+select {+ALL_ROWS } 'Physical I/O',
        hash_value,
        round(100 * nvl(dsk_reads/sum_disk,0),2) disk_io_pct
 from
@@ -323,7 +340,7 @@ FROM sys.seg$ s, sys.ts$ ts
 (SELECT COUNT(*) invalid_objects
 FROM   SYS.OBJ$
 WHERE  STATUS NOT IN (0,1)),
-(SELECT  /*+ ALL_ROWS ORDERED CLUSTER(T) CLUSTER(I) STAR_TRANSFORMATION USE_HASH(O,T,I) */
+(SELECT  {+ ALL_ROWS ORDERED CLUSTER(T) CLUSTER(I) STAR_TRANSFORMATION USE_HASH(O,T,I) }
       COUNT(*) tabs_idx_same_ts
 FROM  SYS.OBJ$ O,
       SYS.TAB$ T,
@@ -334,7 +351,7 @@ AND   I.TS# = T.TS#
 AND   T.TS# <> 0
 AND   I.TS# <> 0
 AND   O.OWNER# IN
-     (SELECT  /*+ CLUSTER() PUSH_SUBQ */
+     (SELECT  {+ CLUSTER() PUSH_SUBQ }
       USER#
       FROM SYS.USER$
       WHERE NAME NOT IN ('SYS','SYSTEM','OUTLN', 'XDB'))),
